@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khan Mashood | Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f6f7fb;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    header {
+      width: 100%;
+      background: white;
+      position: fixed;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #2563eb;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #374151;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #2563eb;
+    }
+
+    .menu-btn {
+      display: none;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 80px 20px;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 40px;
+      padding-top: 120px;
+    }
+
+    .hero-text span {
+      color: #2563eb;
+      font-weight: bold;
+    }
+
+    .hero-text h1 {
+      font-size: 46px;
+      margin: 12px 0;
+      line-height: 1.15;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      color: #4b5563;
+      max-width: 620px;
+      margin-bottom: 28px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: #2563eb;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 2px solid #2563eb;
+      color: #2563eb;
+    }
+
+    .btn-outline:hover {
+      background: #2563eb;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .profile-card {
+      background: white;
+      padding: 28px;
+      border-radius: 18px;
+      box-shadow: 0 15px 35px rgba(37, 99, 235, 0.12);
+      text-align: center;
+    }
+
+    .profile-circle {
+      width: 150px;
+      height: 150px;
+      margin: auto;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2563eb, #60a5fa);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 52px;
+      font-weight: bold;
+    }
+
+    .profile-card h3 {
+      margin-top: 20px;
+      font-size: 24px;
+    }
+
+    .profile-card p {
+      color: #6b7280;
+      margin-top: 8px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-size: 34px;
+      color: #111827;
+    }
+
+    .section-title p {
+      color: #6b7280;
+      margin-top: 8px;
+    }
+
+    .about-box {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .about-box p {
+      margin-bottom: 16px;
+      color: #4b5563;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .skill-card {
+      background: white;
+      padding: 22px;
+      border-radius: 14px;
+      text-align: center;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.05);
+      transition: 0.3s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .skill-card h3 {
+      color: #2563eb;
+      margin-bottom: 8px;
+    }
+
+    .skill-card p {
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      transition: 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .project-top {
+      height: 140px;
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+    }
+
+    .project-content {
+      padding: 22px;
+    }
+
+    .project-content h3 {
+      margin-bottom: 10px;
+    }
+
+    .project-content p {
+      color: #6b7280;
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tags span {
+      font-size: 12px;
+      background: #eff6ff;
+      color: #2563eb;
+      padding: 5px 8px;
+      border-radius: 20px;
+    }
+
+    .contact-box {
+      background: white;
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .contact-info p {
+      margin: 12px 0;
+      color: #4b5563;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      outline: none;
+      font-size: 15px;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #2563eb;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      background: #111827;
+      color: white;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: all 0.7s ease;
+    }
+
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 850px) {
+      .hero,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-text h1 {
+        font-size: 36px;
+      }
+
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0;
+        display: none;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-text h1 {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">KM.</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="menu-btn" id="menuBtn">☰</div>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-text fade-in">
+      <span>Hello, I am</span>
+      <h1>Khan Mashood</h1>
+      <p>
+        A Computer Engineering student learning full stack web development. I enjoy building clean,
+        responsive websites and improving my skills through practical projects.
+      </p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-outline">Contact Me</a>
+      </div>
+    </div>
+
+    <div class="profile-card fade-in">
+      <div class="profile-circle">KM</div>
+      <h3>Full Stack Developer Intern</h3>
+      <p>HTML • CSS • JavaScript • Learning React</p>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-title fade-in">
+      <h2>About Me</h2>
+      <p>A little about my background and goals</p>
+    </div>
+
+    <div class="about-box fade-in">
+      <p>
+        I am currently pursuing Computer Engineering and building my foundation in web development.
+        I have worked with HTML, CSS and JavaScript. I am now learning how frontend and backend
+        parts of an application connect together.
+      </p>
+      <p>
+        I am looking for a full stack developer internship where I can contribute to real projects,
+        learn from experienced developers and improve my problem-solving and coding skills.
+      </p>
+      <p>
+        My main focus right now is writing clean code, understanding project structure and creating
+        user-friendly web pages that work well on both desktop and mobile screens.
+      </p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-title fade-in">
+      <h2>Skills</h2>
+      <p>Technologies I am currently working with</p>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-card fade-in">
+        <h3>HTML</h3>
+        <p>Semantic structure, forms, tables and basic accessibility.</p>
+      </div>
+      <div class="skill-card fade-in">
+        <h3>CSS</h3>
+        <p>Responsive layouts, Flexbox, Grid and simple animations.</p>
+      </div>
+      <div class="skill-card fade-in">
+        <h3>JavaScript</h3>
+        <p>DOM manipulation, events, validation and small interactions.</p>
+      </div>
+      <div class="skill-card fade-in">
+        <h3>Git & GitHub</h3>
+        <p>Basic version control, repositories and project documentation.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-title fade-in">
+      <h2>Projects</h2>
+      <p>Practice projects I can explain in an interview</p>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card fade-in">
+        <div class="project-top">🌐</div>
+        <div class="project-content">
+          <h3>Personal Portfolio Website</h3>
+          <p>A responsive portfolio website with sections for skills, projects and contact details.</p>
+          <div class="tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-top">✅</div>
+        <div class="project-content">
+          <h3>Task Manager App</h3>
+          <p>A simple task list where users can add, complete and remove daily tasks.</p>
+          <div class="tags">
+            <span>JavaScript</span>
+            <span>DOM</span>
+            <span>Local Storage</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-top">🏥</div>
+        <div class="project-content">
+          <h3>Hospital Management UI</h3>
+          <p>A basic frontend design for managing patients, doctors and appointments.</p>
+          <div class="tags">
+            <span>HTML</span>
+            <span>CSS Grid</span>
+            <span>UI Design</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-title fade-in">
+      <h2>Contact</h2>
+      <p>Open to internship opportunities</p>
+    </div>
+
+    <div class="contact-box fade-in">
+      <div class="contact-info">
+        <h3>Let’s connect</h3>
+        <p><strong>Email:</strong> khanmashood0786@gmail.com</p>
+        <p><strong>Location:</strong> Mumbai, India</p>
+        <p><strong>Role Interested In:</strong> Full Stack Developer Intern</p>
+        <p>
+          I am available for internships where I can learn, contribute and grow as a developer.
+        </p>
+      </div>
+
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="email" id="email" placeholder="Your Email" required />
+        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+        <button class="btn btn-primary" type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Khan Mashood. Built with HTML, CSS and JavaScript.</p>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    const links = document.querySelectorAll('.nav-links a');
+
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    const fadeElements = document.querySelectorAll('.fade-in');
+
+    function showOnScroll() {
+      fadeElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (elementTop < windowHeight - 80) {
+          element.classList.add('show');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', showOnScroll);
+    window.addEventListener('load', showOnScroll);
+
+    const contactForm = document.getElementById('contactForm');
+
+    contactForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (name === '' || email === '' || message === '') {
+        alert('Please fill all fields.');
+        return;
+      }
+
+      alert('Thank you! Your message has been recorded.');
+      contactForm.reset();
+    });
+  </script>
+</body>
+</html>
